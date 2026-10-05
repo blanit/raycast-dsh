@@ -1,0 +1,96 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "dsh",
+  "title": "DeepSeek Harness",
+  "description": "Control the DeepSeek Harness desktop app: a global-hotkey toggle for its window, plus show, hide, restart and quit.",
+  "icon": "extension-icon.png",
+  "author": "blanit",
+  "license": "MIT",
+  "categories": ["Developer Tools"],
+  "platforms": ["Windows"],
+  "commands": [
+    {
+      "name": "toggle-dsh",
+      "title": "Toggle DSH Window",
+      "subtitle": "DeepSeek Harness",
+      "description": "Hide the DSH window while it is the active window; otherwise reveal and focus it. Assign a global hotkey to this command.",
+      "mode": "no-view"
+    },
+    {
+      "name": "show-dsh",
+      "title": "Show DSH Window",
+      "subtitle": "DeepSeek Harness",
+      "description": "Reveal, restore and focus the DSH window. Starts the desktop app when it is not running.",
+      "mode": "no-view"
+    },
+    {
+      "name": "hide-dsh",
+      "title": "Hide DSH Window",
+      "subtitle": "DeepSeek Harness",
+      "description": "Hide the DSH window to the notification area. Running tasks keep going, exactly like the shell's own close button.",
+      "mode": "no-view"
+    },
+    {
+      "name": "dsh-status",
+      "title": "DSH Status",
+      "subtitle": "DeepSeek Harness",
+      "description": "Inspect the DSH process, window and harness home, and run the other commands from one list.",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "executablePath",
+      "title": "Application Path",
+      "description": "Full path to DeepSeek Harness.exe. Leave empty to detect it from the running app or the default install location.",
+      "type": "textfield",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "processName",
+      "title": "Process Name",
+      "description": "Image name of the desktop shell, without the .exe extension.",
+      "type": "textfield",
+      "required": false,
+      "default": "DeepSeek Harness"
+    },
+    {
+      "name": "launchIfNotRunning",
+      "title": "Launch When Not Running",
+      "description": "Start the DSH desktop app when a command finds it not running. Turn this off to make the commands report instead of launching.",
+      "type": "checkbox",
+      "required": false,
+      "default": true,
+      "label": "Launch DSH automatically"
+    },
+    {
+      "name": "launchTimeout",
+      "title": "Launch Timeout",
+      "description": "Seconds to wait for the window after launching DSH.",
+      "type": "textfield",
+      "required": false,
+      "default": "15"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^2.6.2"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^2.2.0",
+    "@types/node": "^22.15.3",
+    "@types/react": "^19.1.8",
+    "eslint": "^9.30.1",
+    "prettier": "^3.6.2",
+    "typescript": "^5.8.3"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "build:dir": "ray build -e dist -o dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "verify:commands": "node _tools/verify-commands.cjs",
+    "publish": "npx @raycast/api@latest publish"
+  }
+}
